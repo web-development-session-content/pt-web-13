@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>call, apply, bind</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  //   city, state
+  let student1 = {
+    name: "ashish",
+    age: "17",
+    batch: "pt_web-13",
+  };
+
+  let student2 = {
+    name: "vishal",
+    age: "16",
+    batch: "pt_web-13",
+  };
+
+  function newProperties(c, s) {
+    this.city = c;
+    this.state = s;
+  }
+  // call -->
+  //   newProperties.call(student1, "hyderabad", "telangana");
+
+  //   console.log(student1);
+
+  //   newProperties.call(student2, "patna", "bihar");
+
+  //   console.log(student2);
+
+  //apply--->
+
+  //   newProperties.apply(student1, ["jaipur", "rajasthan"]);
+
+  //   console.log(student1);
+
+  //   newProperties.apply(student2, ["bangalor", "karnataka"]);
+  //   console.log(student2);
+
+  //bind-->
+
+  //   let result = newProperties.bind(student1, "mumbai", "maharashtra");
+
+  //   result();
+  //   console.log(student1);
+
+  let a = newProperties.bind(student2, "jabalpur", "madhya pradesh");
+
+  a();
+  console.log(student2);
+</script>

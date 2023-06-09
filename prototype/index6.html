@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>constructor function prototype</h1>
+  </body>
+</html>
+<script>
+  //prototype--. it is used in adding prototype to constructor function
+  //   function student(batchNo, techStack) {
+  //     this.batchNo = batchNo;
+  //     this.techStack = techStack;
+  //   }
+
+  //   student.prototype.country = "India";
+  //   student.prototype.print = function () {
+  //     console.log("hi");
+  //   };
+
+  //   const shubhi = new student(5, "MERN");
+  //   //   console.log(shubhi);
+
+  //--------------------------------------------
+
+  function person(firstName, lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
+  person.prototype.displayFullName = function () {
+    console.log(this.firstName + " " + this.lastName);
+  };
+  person.prototype.city = "hyderabad";
+
+  let person1 = new person("ashish", "roul");
+  console.log(person1);
+
+  function student(firstName, lastName, batchNo, techStack) {
+    // person.call(this, firstName, lastName);
+    person.apply(this, [firstName, lastName]);
+    this.batchNo = batchNo;
+    this.techStack = techStack;
+  }
+
+  //   Object.setPrototypeOf(student.prototype, person.prototype);
+
+  student.prototype = Object.create(person.prototype);
+
+  let student1 = new student("vishal", "sharma", 15, "MERN");
+
+  console.log(student1.displayFullName());
+</script>

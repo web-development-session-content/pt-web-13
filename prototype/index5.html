@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  //   let obj = {
+  //     name: "masai",
+  //   };
+
+  //   console.log(obj.__proto__.__proto__);
+
+  const cat = {
+    legs: 4,
+    tail: true,
+    claws: "sharp",
+    moustache: true,
+  };
+
+  const tiger = Object.create(cat);
+  tiger.speed = 60;
+  tiger.color = "orange";
+
+  console.log(tiger);
+
+  //hasOwnProperty();
+  console.log(tiger.hasOwnProperty("legs"));
+
+  // this method is used to check whether a property is inherited or not
+</script>

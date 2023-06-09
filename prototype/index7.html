@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function person(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  person.prototype.city = "hyderabad";
+
+  function student(name, age, batch) {
+    person.call(this, name, age);
+    this.batch = batch;
+  }
+
+  Object.setPrototypeOf(student.prototype, person.prototype);
+
+  const student1 = new student("mahesh", "20", "web13");
+
+  console.log(student1.city);
+</script>

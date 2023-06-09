@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // inheritance
+
+  let grandFather = {
+    name: "goku",
+    lastName: "sharma",
+    DNA: "123",
+  };
+
+  //   let Father = {
+  //     name: "gohan",
+  //     lastName: "sharma",
+  //     DNA: "123",
+  //   };
+
+  let Father = Object.create(grandFather); // it is creating a object with grandFather properties it has inherited;
+
+  Father.name = "gohan";
+  Father.houseName = "Dragon ball";
+  Father.bloodGroup = "o+";
+
+  let son = Object.create(Father);
+
+  son.name = "picalo";
+
+  console.log(son.__proto__.__proto__.__proto__.__proto__);
+</script>
