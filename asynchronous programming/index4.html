@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>0</h1>
+  </body>
+</html>
+<script>
+  let h1 = document.querySelector("h1");
+  let count = 0;
+
+  let id = setInterval(function () {
+    count++;
+    h1.innerText = count;
+  }, 1000);
+
+  setInterval(function () {
+    clearInterval(id);
+    count = 0;
+    h1.innerText = count;
+  }, 5000);
+
+  //   let id = setTimeout(function () {
+  //     console.log("hi");
+  //   }, 1000);
+
+  //   let id2 = setTimeout(function () {
+  //     console.log("everyone");
+  //   }, 1000);
+
+  //   console.log(id);
+  //   //   console.log(id2);
+  //   let i = 0;
+  //   setInterval(function () {
+  //     console.log(i++);
+  //   }, 2000);
+
+  //setTimeout---> it will run only one time.
+
+  //setInterval ---> it will continues run after the set interval time.
+</script>

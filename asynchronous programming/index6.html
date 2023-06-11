@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="hour">0</h1>
+    <h1 id="min">0</h1>
+    <h1 id="sec">0</h1>
+  </body>
+  <script>
+    let hour = document.querySelector("#hour");
+    let min = document.querySelector("#min");
+    let sec = document.querySelector("#sec");
+
+    let hourD = 0;
+    let minD = 0;
+    let secD = 0;
+
+    setInterval(function () {
+      secD++;
+      sec.innerText = secD;
+      if (secD === 6) {
+        minD++;
+        secD = 0;
+        min.innerText = minD;
+        if (minD === 6) {
+          hourD++;
+          minD = 0;
+          hour.innerText = hourD;
+        }
+      }
+    }, 1000);
+  </script>
+</html>
