@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      #container img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <a href="./cart.html">Cart</a>
+      <a href="./index.html">Home</a>
+    </div>
+    <div id="container"></div>
+  </body>
+</html>
+<script>
+  let container = document.getElementById("container");
+
+  let LSData = JSON.parse(localStorage.getItem("ecomm"));
+
+  Display(LSData);
+
+  function Display(data) {
+    //   console.log("hi");
+    container.innerHTML = "";
+    data.forEach((element) => {
+      let card = document.createElement("div");
+
+      let title = document.createElement("h2");
+      let image = document.createElement("img");
+      let description = document.createElement("p");
+      let category = document.createElement("p");
+      let price = document.createElement("h4");
+      let addToCart = document.createElement("button");
+
+      title.innerText = element.title;
+      image.setAttribute("src", element.image);
+      description.innerText = element.description;
+      price.innerText = element.price;
+      category.innerText = element.category;
+      addToCart.innerText = "Add To Cart";
+      addToCart.addEventListener("click", function () {
+        LSData.push(element);
+        localStorage.setItem("ecomm", JSON.stringify(LSData));
+      });
+      card.append(title, image, description, category, price, addToCart);
+
+      container.append(card);
+    });
+  }
+</script>

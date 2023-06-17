@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    more than one promise;
+  </body>
+</html>
+<script>
+  //Promise.all
+
+  let promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("Hi everyone, from promise 1");
+    }, 2000);
+  });
+
+  let promise2 = new Promise(function (resolve, reject) {
+    setTimeout(() => {
+      //   resolve("hope your doing good from promise 2");
+      reject("there is some sort of issue due to internet");
+    }, 5000);
+  });
+
+  let promiseArray = [promise1, promise2];
+
+  Promise.all(promiseArray)
+    .then((res) => {
+      console.log(res);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+</script>

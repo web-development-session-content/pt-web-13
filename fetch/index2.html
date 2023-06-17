@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    nested promises;
+  </body>
+</html>
+
+<script>
+  let coin = true;
+
+  let promise1 = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve("found the coin");
+      //   reject("I did found the coin");
+    }, 2000);
+  });
+
+  promise1
+    .then(function (res) {
+      let childPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+          //   resolve("I get the chocolate");
+          reject("the required chocolate not found");
+        }, 2000);
+      });
+
+      return childPromise;
+    })
+    .then((data) => {
+      console.log(data); // this the place we are getting the childpromise resolved part.
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+</script>

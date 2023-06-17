@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    first time using API
+    <div id="container"></div>
+  </body>
+</html>
+<script>
+  let container = document.getElementById("container");
+  let result = fetch("https://reqres.in/api/users");
+
+  result
+    .then((res) => {
+      //   console.log(res);
+      //   console.log(res.json());
+      return res.json(); // it is returning a promise
+    })
+    .then((a) => {
+      console.log(a); // here it is an object.
+      //   console.log(a.data);
+      displayData(a.data);
+    })
+
+    .catch((error) => {
+      console.log(error);
+    });
+
+  const displayData = (data) => {
+    data.forEach((element) => {
+      let name = document.createElement("p");
+      name.innerText = `${element.first_name} ${element.last_name}`;
+
+      container.append(name);
+    });
+  };
+
+  //   displayData(fetchData);
+</script>

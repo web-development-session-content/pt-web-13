@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let result = new Promise(function (resolved, reject) {
+    let number = Math.round(Math.random());
+
+    setTimeout(function () {
+      if (number === 1) {
+        resolved(number);
+      } else {
+        reject(number);
+      }
+    }, 3000);
+  });
+
+  result
+    .then((a) => {
+      console.log(a);
+    })
+    .catch((b) => {
+      console.log(b);
+    });
+</script>

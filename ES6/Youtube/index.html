@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Youtube</h1>
+    <input type="text" id="search" />
+    <button onclick="searchVideos()">Search</button>
+    <div id="search_result"></div>
+  </body>
+</html>
+<script>
+  let key = "AIzaSyDzs7NFztfsrlXg9WdPvwQ1JCoC0s0wftI";
+  let search_result_div = document.getElementById("search_result");
+
+  async function searchVideos() {
+    try {
+      let input = document.getElementById("search").value;
+
+      let result = await fetch(
+        `https://youtube.googleapis.com/youtube/v3/search?part=snippetq&=${input}&type=video&key=${key}`
+      );
+
+      let data = await result.json();
+
+      console.log(data.items);
+      appendVideos(data.items);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const appendVideos = (data) => {
+    search_result_div.innerHTML = null;
+    data.forEach((e) => {
+      let div = document.createElement("div");
+      let img = document.createElement("img");
+      img.src = e.snippet.thumbnails.default.url;
+      let title = document.createElement("h4");
+      title.innerText = e.snippet.title;
+
+      div.append(img, title);
+
+      search_result_div.append(div);
+    });
+  };
+</script>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      #container img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <select id="filter">
+      <option value="">select category</option>
+      <option value="men's clothing">Men's Clothing</option>
+      <option value="women's clothing">Women's clothing</option>
+      <option value="electronics">Electronics</option>
+    </select>
+    <hr>
+ <div id="buttons">
+      <button id="previous" ><< Previous</button>
+      <h3 id="page_number">1</h3>
+      <button id="next">Next >></button>
+
+      <hr>
+    
+    <hr>
+    <div id="container"></div>
+  </body>
+</html>
+<script src="index.js"></script>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container {
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+      }
+      #container img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <select id="filter">
+      <option value="">select category</option>
+      <option value="men's clothing">Men's Clothing</option>
+      <option value="women's clothing">Women's clothing</option>
+      <option value="electronics">Electronics</option>
+    </select>
+    <div class="nav">
+      <a href="./cart.html">Cart</a>
+      <a href="./index.html">Home</a>
+    </div>
+    <div id="container"></div>
+  </body>
+</html>
+<script type="module">
+  import Display from "./script/Append.js";
+
+  let container = document.getElementById("container");
+
+  let filter = document.getElementById("filter");
+  let fetchData;
+  const API = "https://fakestoreapi.com/products";
+
+  let LSData = localStorage.getItem("ecomm");
+  if (LSData == null) {
+    LSData = [];
+  } else {
+    LSData = JSON.parse(LSData);
+  }
+
+  async function Fetching() {
+    let response = await fetch(API);
+    let data = await response.json();
+    fetchData = data;
+    Display(fetchData);
+    console.log(data);
+  }
+
+  filter.addEventListener("change", function () {
+    let filtered = fetchData.filter(function (element) {
+      if (element.category === filter.value) {
+        return element;
+      }
+    });
+    Display(filtered);
+  });
+</script>

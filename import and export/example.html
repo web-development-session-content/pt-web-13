@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  let object = {
+    name: "wani",
+    age: 16,
+    address: {
+      locations: "kashmir",
+      pincode: 1234,
+    },
+  };
+
+  let {
+    name,
+    age,
+    address: { locations, pincode },
+  } = object;
+
+  console.log(locations, pincode);
+</script>
