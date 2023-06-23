@@ -1,0 +1,16 @@
+{
+  "blogs": [
+    {
+      "title": "blog-1",
+      "body": "web application using https methods",
+      "author": "pt-web",
+      "id": 1
+    },
+    {
+      "title": "abc",
+      "body": "dgdtdfgdfgdfgdfgd",
+      "author": "mahesh",
+      "id": 2
+    }
+  ]
+}

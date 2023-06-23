@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    closure
+  </body>
+</html>
+<script>
+  //   function print() {
+  //     return "hi everyone";
+  //   }
+
+  //   let a = print(); // hi everyone;
+
+  //   console.log(a);
+
+  //   function outer() {
+  //     return function inner() {
+  //       console.log("closure");
+  //     };
+  //   }
+
+  //   let output = outer(); //
+
+  //   output();
+  //   let a = 10;
+
+  //   let a;
+
+  //   function outer() {
+  //     // let a = 5;
+
+  //     function inner() {
+  //       console.log(a);
+  //     }
+  //     inner();
+  //   }
+
+  //   outer();
+
+  //   function outer() {
+  //     let a = 10;
+
+  //     return () => {
+  //       let b = 20;
+  //       console.log(a);
+  //     };
+  //   }
+
+  //   let output = outer();
+
+  //   output();
+
+  function authentication() {
+    let userName = "masai";
+    let password = "123";
+
+    return (user_password, user_username) => {
+      if (user_username === userName && user_password === password) {
+        console.log("access granted");
+      } else {
+        console.log("data is not matching");
+      }
+    };
+  }
+
+  let checking_data = authentication();
+
+  checking_data("masai", "123");
+
+  checking_data("tushar", "abc");
+
+  //   A inner function which can have access to outer functions variables and parameter even after the outer function is return is called closure.
+</script>
