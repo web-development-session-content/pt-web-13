@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  function x() {
+    let firstName = "vivek";
+
+    return function y() {
+      let lastName = "Yadav";
+
+      console.log(firstName + "_" + lastName);
+    };
+  }
+
+  let output = x();
+
+  output();
+
+  //   a inner function having access to outer function variables and parameter even after the outer function return is called closures
+</script>

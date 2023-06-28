@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>constructor</title>
+  </head>
+  <body></body>
+</html>
+
+<script>
+  // JS constructors
+  //    constructor functions are just a template to create multiple object.
+
+  //   function Student(a, b) {
+  //     this.firstName = a;
+  //     this.lastName = b;
+  //     this.displayFullName = function () {
+  //       console.log(this.firstName + this.lastName);
+  //     };
+  //   }
+
+  //classes
+  //syntax
+  //   class name(){
+  //     constructor(){
+  //         // your code
+  //     }
+  //   }
+
+  //   class Student {
+  //     constructor(a, b) {
+  //       this.firstName = a;
+  //       this.lastName = b;
+  //     }
+  //   }
+
+  //   const student1 = new Student("masai", "school");
+  //   console.log(student1);
+
+  //   one way
+  // class Student {
+  //   constructor(a, b) {
+  //     this.firstName = a;
+  //     this.lastName = b;
+  //     this.displayFullName = function () {
+  //       console.log(this.firstName + " " + this.lastName);
+  //     };
+  //   }
+  // }
+
+  //   const student1 = new Student("masai", "school");
+  //   console.log(student1);
+
+  //   student1.displayFullName();
+
+  // second way
+  //   class Student {
+  //     constructor(a, b, c) {
+  //       this.firstName = a;
+  //       this.lastName = b;
+  //       this.dinner = c;
+  //     }
+  //     //getter methods
+  //     displayFullName() {
+  //       console.log(this.firstName + " " + this.lastName);
+  //     }
+
+  //     //setter methods
+  //     UpdateDinnerValue(newValue) {
+  //       this.dinner = newValue;
+  //     }
+  //   }
+
+  //   const student1 = new Student("masai", "school", true);
+
+  //   console.log(student1);
+  //   //   student1.UpdateDinnerValue(false);
+  //   student1.displayFullName();
+
+  // ........................//
+  //   static---> properties and methods belong to class itself and cannot be accessable to individual object
+
+  //   class Student {
+  //     constructor(a, b, c) {
+  //       this.firstName = a;
+  //       this.lastName = b;
+  //       this.dinner = c;
+  //       Student.totalStudentsCount++;
+  //     }
+
+  //     static totalStudentsCount = 0;
+  //     static getTotalStudentCount() {
+  //       return Student.totalStudentsCount;
+  //     }
+  //   }
+
+  //   const student1 = new Student("masai", "school", true);
+  //   const student2 = new Student("anwar", "rizwan", true);
+  //   const student3 = new Student("tushar", "sapate", true);
+  //   const student4 = new Student("ashish", "roul", true);
+
+  //   console.log(student1);
+
+  //   console.log(Student.getTotalStudentCount());
+
+  //   Create a class to save details of people registering for vaccination in CityHospital
+  //   	1. Full Name
+  //   	2. Gender
+  //   	3. Age
+  //   	4. isFirstDose
+  //   	5. A method to display details of this person
+  //   	6. A method to update isFirstDose value
+  //   	7. A method to to return number of people registered
+
+  //   class PeopleRegisteredInCityHospital {
+  //     constructor(fullName, gender, age, isFirstDose) {
+  //       this.fullName = fullName;
+  //       this.gender = gender;
+  //       this.age = age;
+  //       this.isFirstDose = isFirstDose;
+
+  //       PeopleRegisteredInCityHospital.numberOfPeopleRegistered++;
+  //     }
+
+  //     getPersonDetails() {
+  //       const { fullName, gender, age, isFirstDose } = this;
+  //       console.log(fullName, gender, age, isFirstDose);
+  //     }
+
+  //     updateIsFirstDose(newValue) {
+  //       this.isFirstDose = newValue;
+  //     }
+
+  //     static numberOfPeopleRegistered = 0;
+  //     static getNumberOfpeopleRegistered() {
+  //       console.log(PeopleRegisteredInCityHospital.numberOfPeopleRegistered);
+  //     }
+  //   }
+
+  //   const mahesh = new PeopleRegisteredInCityHospital(
+  //     "mahesh",
+  //     "male",
+  //     "23",
+  //     false
+  //   );
+  //   mahesh.updateIsFirstDose(true);
+  //   console.log(mahesh);
+
+  //   PeopleRegisteredInCityHospital.getNumberOfpeopleRegistered();
+
+  //   function Person(firstName, lastName) {
+  //       this.firstName = firstName;
+  //       this.lastName = lastName;
+  //     }
+  //     Person.prototype.displayFullName = function () {
+  //       console.log(this.firstName + " " + this.lastName);
+  //     };
+
+  //     let person1 = new Person("Nikita", "Gupta");
+  //     console.log(person1);
+
+  //     function Student(firstName, lastName, batchNo, techStack) {
+  //       Person.call(this, firstName, lastName);
+  //       this.batchNo = batchNo;
+  //       this.techStack = techStack;
+  //     }
+
+  //     Object.setPrototypeOf(Student.prototype, Person.prototype);
+
+  class Person {
+    constructor(firstName, lastName) {
+      this.firstName = firstName;
+      this.lastName = lastName;
+    }
+    displayFullName = function () {
+      console.log(this.firstName + " " + this.lastName);
+    };
+  }
+
+  class Student extends Person {
+    constructor(firstName, lastName, batchNo, techStack) {
+      super(firstName, lastName);
+      this.batchNo = batchNo;
+      this.techStack = techStack;
+    }
+  }
+
+  const student1 = new Student("shubam", "chaubey", "ptweb13", "MERN");
+  console.log(student1);
+  student1.displayFullName();
+  // class inheritance
+  //extend---> a relationship is created between them.
+  //super() --> it is used to invoke the parent class constructor
+</script>

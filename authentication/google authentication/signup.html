@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action=""></form>
+  <body>
+   <div>
+      <button id="logout" style="display: none">logout</button>
+    </div>
+   
+        <button type="button" id="register">Google</button>
+      </div>
+
+   
+</body>
+</html>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    import { GoogleAuthProvider, getAuth, signInWithPopup, signOut  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyCahOyry2jfP3sstPujN4DHD7JjQ9pdn20",
+    authDomain: "authentication-bec96.firebaseapp.com",
+    projectId: "authentication-bec96",
+    storageBucket: "authentication-bec96.appspot.com",
+    messagingSenderId: "203817127204",
+    appId: "1:203817127204:web:0a5e463dcb7224b8bab7b1",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  console.log(app);
+
+  const auth = getAuth();
+
+
+const provider = new GoogleAuthProvider();
+
+
+document.getElementById("register").addEventListener("click",function(){
+signInWithPopup(auth, provider)
+  .then((result) => {
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    const credential = GoogleAuthProvider.credentialFromResult(result);
+    const token = credential.accessToken;
+    // The signed-in user info.
+    const user = result.user;
+
+    console.log(user);
+      document.getElementById('logout').style.display= "block"
+    document.getElementById('logout').innerText= `logout ${user.displayName}`;
+    alert("registered")
+    // IdP data available using getAdditionalUserInfo(result)
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // The email of the user's account used.
+    const email = error.customData.email;
+    // The AuthCredential type that was used.
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    // ...
+  });
+})
+
+
+  //----- Logout code start
+  document.getElementById("logout").addEventListener("click", function () {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful.
+        console.log("Sign-out successful.");
+        alert("Sign-out successful.");
+        document.getElementById("logout").style.display = "none";
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log("An error happened.");
+      });
+  });
+  //----- End
+
+</script>

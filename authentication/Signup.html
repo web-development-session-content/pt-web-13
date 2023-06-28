@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <form action=""></form>
+  <body>
+    <form action="" id="registration_form">
+      <div>
+        <div>
+          <label for="">Username</label>
+          <input type="text" placeholder="name" id="name" />
+        </div>
+        <div>
+          <label for="">Email</label>
+          <input type="text" placeholder="Email" id="email" />
+        </div>
+        <div>
+          <label for="">Password</label>
+          <input
+            type="password"
+            placeholder="name"
+            id="password"
+            autocomplete="on"
+          />
+        </div>
+        <button type="button" id="register">Signup</button>
+      </div>
+    </form>
+    <a href="./signin.html">Signin</a>
+  </body>
+</html>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+  import {
+    getAuth,
+    createUserWithEmailAndPassword,
+  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-auth.js";
+
+  import {
+    getDatabase,
+    ref,
+    set,
+  } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-database.js";
+
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCahOyry2jfP3sstPujN4DHD7JjQ9pdn20",
+    authDomain: "authentication-bec96.firebaseapp.com",
+    projectId: "authentication-bec96",
+    storageBucket: "authentication-bec96.appspot.com",
+    messagingSenderId: "203817127204",
+    appId: "1:203817127204:web:0a5e463dcb7224b8bab7b1",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  console.log(app);
+  const auth = getAuth();
+  const database = getDatabase();
+
+  document.getElementById("register").addEventListener("click", function () {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    let userName = document.getElementById("name").value;
+
+    // new registration.
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        set(ref(database, "users/" + user.uid), {
+          userName,
+          email,
+        });
+
+        alert("registered successfully");
+        console.log(user);
+
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+        // ..
+      });
+  });
+</script>
